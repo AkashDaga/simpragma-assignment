@@ -49,13 +49,13 @@ public class ArticleServiceImpl implements ArticleService {
   @Override
   public SimpleResponseDto getArticles(int page, int size) {
 
+    SimpleResponseDto articlesListRespose = new SimpleResponseDto();
     Page<Article> articles = articleRepository.findAll(PageRequest.of(page, size));
 
     List<ArticleDto> articleDtoList = articles.getContent().stream()
         .map(Utils::fromArticleToArticleDto).collect(
             Collectors.toList());
 
-    SimpleResponseDto articlesListRespose = new SimpleResponseDto();
     articlesListRespose.put(ApplicationConstants.DATA.getValue(), articleDtoList);
 
     return articlesListRespose;

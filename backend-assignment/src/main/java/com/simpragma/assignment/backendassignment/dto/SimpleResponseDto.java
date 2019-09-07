@@ -1,7 +1,6 @@
 package com.simpragma.assignment.backendassignment.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.simpragma.assignment.backendassignment.constants.ApplicationConstants;
 import java.util.HashMap;
 import java.util.Map;
 import lombok.Data;
@@ -28,11 +27,4 @@ public class SimpleResponseDto {
     return data.containsKey(key);
   }
 
-  public String getResponse() {
-    return (String) data.get(ApplicationConstants.RESPONSE.getValue());
-  }
-
-  public void setResponse(String responseValue) {
-    put(ApplicationConstants.RESPONSE.getValue(), responseValue);
-  }
 }

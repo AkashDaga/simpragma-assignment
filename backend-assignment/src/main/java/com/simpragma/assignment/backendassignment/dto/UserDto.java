@@ -19,4 +19,7 @@ public class UserDto {
 
   private String address;
 
+  @Builder.Default
+  private String role = "ROLE_USER";
+
 }

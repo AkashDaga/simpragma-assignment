@@ -2,6 +2,7 @@ package com.simpragma.assignment.backendassignment.dto.request.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -18,4 +19,7 @@ public class UserRegisterRequestDto {
   private String email;
 
   private String address;
+
+  @Default
+  private String role = "ROLE_USER";
 }

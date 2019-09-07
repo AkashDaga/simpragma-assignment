@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,18 +28,20 @@ public class ArticleController {
   @PostMapping(value = "/articles", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
   @ApiOperation(value = "create articles", response = SimpleResponseDto.class)
   public ResponseEntity createArticle(
+      @RequestHeader("Authorisation") String access_token,
       @RequestBody ArticleCreateRequestDto articleCreateRequestDto) {
 
     return new ResponseEntity<>(articleService.createArticle(articleCreateRequestDto),
         HttpStatus.CREATED);
   }
 
-  @GetMapping(value = "/articles",produces = MediaType.APPLICATION_JSON_VALUE)
-  @ApiOperation(value = "create articles", response = SimpleResponseDto.class)
+  @GetMapping(value = "/articles", produces = MediaType.APPLICATION_JSON_VALUE)
+  @ApiOperation(value = "get articles", response = SimpleResponseDto.class)
   public ResponseEntity getArticleList(
+      @RequestHeader("Authorisation") String access_token,
       @RequestParam int page, @RequestParam int size) {
 
-    return new ResponseEntity<>(articleService.getArticles(page,size),
+    return new ResponseEntity<>(articleService.getArticles(page, size),
         HttpStatus.CREATED);
   }
 

@@ -11,5 +11,4 @@ public class ArticleCreateRequestDto {
 
   private String author;
 
-  private String access_token;
 }
